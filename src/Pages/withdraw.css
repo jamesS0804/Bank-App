@@ -1,0 +1,51 @@
+.withdraw-page {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3em;
+    font-size: 1.5rem;
+}
+.withdraw-page a {
+    position: absolute;
+    left: 0;
+}
+.withdraw-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    gap: 2rem;
+}
+input {
+    width: 100%;
+    flex-grow: 1;
+    text-align: center;
+    font-size: 2.5rem;
+}
+.withdraw-amount-input {
+    width: 50%;
+    max-height: 50%;
+    display: flex;
+    font-size: 6rem;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.withdraw-amount-input input,
+.withdraw-amount-input input:focus {
+   border: none;
+   outline: none;
+   border-bottom: 1px solid black;
+   font-size: 6rem;
+   appearance: textfield;
+}
+.withdraw-amount-button {
+    background-color: rgb(5, 126, 5);
+    max-height: 20%;
+    cursor: pointer;
+}

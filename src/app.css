@@ -1,0 +1,91 @@
+:root {
+    font-size: 10px;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    border: 1px solid red;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dashboard {
+    height: 90vh;
+    border: 1px solid black;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border-radius: 2em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.card {
+    border: 1px solid black;
+    padding: 2em;
+    border-radius: 2em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.home-page {
+    height: 90vh;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border-radius: 2em;
+}
+.actions {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1em;
+    text-align: center;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+.actions div {
+    width: 100%;
+}
+.budget-container {
+    flex-grow: 1;
+    height: 20em;
+    display: flex;
+    flex-direction: column;
+    font-size: x-small;
+}
+.budget-data {
+    display: flex;
+}
+.budget-data div {
+    width: 100%;
+}
+.budget-expense {
+    border: 1px solid black;
+    padding: 1rem;
+    align-items: center;
+}
+.budget-cost {
+    border: 1px solid black;
+    padding: 1rem;
+    align-items: center;
+}
+.budget-actions {
+    border: 1px solid black;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.budget-actions-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+.budget-actions-buttons input {
+    padding: 0.4rem;
+}
