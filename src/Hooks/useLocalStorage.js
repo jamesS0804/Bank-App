@@ -1,5 +1,25 @@
 import { useEffect, useState } from "react"
 
+//temporary user list in local storage
+const userList = [
+    {
+        id: "abcdef-1234-xyz",
+        name: "John Smith",
+        cardNumber: "1234 5678 1234 5678",
+        expiryDate: "1/26",
+        accountBalance: 0,
+        expenses: []
+    },
+    {
+        id: "ghijkl-5678-rst",
+        name: "Jane Doe",
+        cardNumber: "1234 1234 1234 1234",
+        expiryDate: "3/30",
+        accountBalance: 100,
+        expenses: []
+    }
+]
+
 // class User {
 //     constructor(email,name,password){
 //         email
@@ -26,24 +46,9 @@ import { useEffect, useState } from "react"
 
 //     }
 // }
-const userList = [
-    {
-        id: "abcdef-1234-xyz",
-        name: "John Smith",
-        cardNumber: "1234 5678 1234 5678",
-        expiryDate: "1/26",
-        accountBalance: 0,
-        expenses: []
-    },
-    {
-        id: "ghijkl-5678-rst",
-        name: "Jane Doe",
-        cardNumber: "1234 1234 1234 1234",
-        expiryDate: "3/30",
-        accountBalance: 100,
-        expenses: []
-    }
-]
+
+// testing purposes
+
 // localStorage.clear
 // localStorage.setItem("userList", JSON.stringify(userList))
 // console.log(userList)
@@ -60,7 +65,6 @@ export default function useLocalStorage(key) {
     const [value,setValue] = useState(() => {
         return loggedAccount[`${key}`]
     })
-
     useEffect(()=> {
        setLoggedAccount(currentAccountInfo => {
             currentAccountInfo = {...loggedAccount}

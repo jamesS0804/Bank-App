@@ -4,12 +4,14 @@ import Card from "../Components/Card"
 import AmountInputField from "../Components/AmountInputField"
 import "./withdraw.css"
 
-export default function Withdraw({accountBalance,setAccountBalance,cardNumber,expiryDate}) {
+export default function Withdraw(props) {
+    const {accountBalance,setAccountBalance,cardNumber,expiryDate} = props
     const [withdrawAmount,setWithdrawAmount] = useState(0)
     function handleChange() {
-        setAccountBalance(() => {
-            accountBalance -= Number(withdrawAmount)
-            return accountBalance
+        setAccountBalance(currentAccountBalance => {
+            currentAccountBalance = accountBalance - Number(withdrawAmount)
+            console.log(withdrawAmount)
+            return currentAccountBalance
         })
     }
     return (
@@ -18,7 +20,7 @@ export default function Withdraw({accountBalance,setAccountBalance,cardNumber,ex
             <h1>Withdraw</h1>
             <Card accountBalance={accountBalance} cardNumber={cardNumber} expiryDate={expiryDate}/>
             <div className="withdraw-container">
-                 <AmountInputField value={withdrawAmount} setValue={setWithdrawAmount}/>
+                <AmountInputField value={withdrawAmount} setValue={setWithdrawAmount}/>
                 <input type="button" value={`withdraw $${withdrawAmount}`} onClick={handleChange} className="withdraw-amount-button"/>
             </div>
         </div>

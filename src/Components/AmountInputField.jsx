@@ -1,4 +1,5 @@
-export default function AmountInputField({value,setValue}) {
+export default function AmountInputField(props) {
+    const {value,setValue} = props
     function handleChange(event) {
         const input = event.target.value
         console.log(input)

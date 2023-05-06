@@ -4,13 +4,14 @@ import Card from "../Components/Card"
 import AmountInputField from "../Components/AmountInputField"
 import "./deposit.css"
 
-export default function Deposit({accountBalance,setAccountBalance,cardNumber,expiryDate}) {
+export default function Deposit(props) {
+    const {accountBalance,setAccountBalance,cardNumber,expiryDate} = props
     const [depositAmount,setDepositAmount] = useState(0)
     function handleChange() {
-        setAccountBalance(() => {
-            accountBalance += Number(depositAmount)
+        setAccountBalance(currentAccountBalance => {
+            currentAccountBalance = accountBalance + Number(depositAmount)
             console.log(depositAmount)
-            return accountBalance
+            return currentAccountBalance
         })
     }
     return (

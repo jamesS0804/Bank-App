@@ -1,6 +1,7 @@
 import "./card.css"
 
-export default function Card({accountBalance,cardNumber,expiryDate}) {
+export default function Card(props) {
+  const {accountBalance,cardNumber,expiryDate} = props
   return (
     <div className="card account-container">
           <div className="account-balance">${accountBalance}</div>
