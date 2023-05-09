@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.budget-container {
+    font-size: 1.5rem;
+}
+table {
+    border-collapse: collapse;
+    text-align: left;
+}
+.budget-data {
+    width: 100%;
+    font-size: 2rem;
+}
+.budget-data td, th {
+    padding: 1rem;
+}
+.budget-data thead {
+    border-bottom: 1px solid rgb(0, 0, 0);
+}
+.budget-item-actions {
+    display: flex;
+    gap: 1rem;
+}

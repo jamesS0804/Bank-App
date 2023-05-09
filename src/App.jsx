@@ -1,23 +1,27 @@
-import { Route, Routes } from "react-router-dom"
-import Home from "./Pages/Home"
-import Deposit from "./Pages/Deposit"
-import Withdraw from "./Pages/Withdraw"
-import Transfer from "./Pages/Transfer"
-import useLocalStorage from "./Hooks/useLocalStorage.js"
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
+import Main from "./Pages/Main"
+import Login from "./Pages/Login"
 
 export default function App() {
-  const [name] = useLocalStorage("name")
-  const [accountBalance,setAccountBalance] = useLocalStorage("accountBalance")
-  const [cardNumber] = useLocalStorage("cardNumber")
-  const [expiryDate] = useLocalStorage("expiryDate")
+  const navigate = useNavigate()
+  const [auth,setAuth] = useState(() => {
+    if(!localStorage.getItem("auth")) {
+      console.log(localStorage.getItem("auth"))
+      return false
+    }
+    return JSON.parse(localStorage.getItem("auth"))
+  })
+  useEffect(()=> {
+    if(auth){
+      navigate("/home")
+    }
+  }, [auth])
+  localStorage.setItem("auth",JSON.stringify(auth))
+
   return (
     <div className="dashboard">
-      <Routes>
-          <Route path="/" element={<Home name={name} accountBalance={accountBalance} setAccountBalance={setAccountBalance} cardNumber={cardNumber} expiryDate={expiryDate}/>}/>
-          <Route path="/deposit" element={<Deposit accountBalance={accountBalance} setAccountBalance={setAccountBalance} cardNumber={cardNumber} expiryDate={expiryDate}/>}/>
-          <Route path="/withdraw" element={<Withdraw accountBalance={accountBalance} setAccountBalance={setAccountBalance} cardNumber={cardNumber} expiryDate={expiryDate}/>}/>
-          <Route path="/transfer" element={<Transfer accountBalance={accountBalance} setAccountBalance={setAccountBalance} cardNumber={cardNumber} expiryDate={expiryDate}/>}/>
-      </Routes>
+      {auth ? <Main auth={auth} setAuth={setAuth}/> : <Login  setAuth={setAuth}/>}
     </div>
   )
 }

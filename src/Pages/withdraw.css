@@ -27,6 +27,7 @@ input {
     font-size: 2.5rem;
 }
 .withdraw-amount-input {
+    margin-top: 5rem;
     width: 50%;
     max-height: 50%;
     display: flex;
@@ -45,6 +46,8 @@ input::-webkit-inner-spin-button {
    appearance: textfield;
 }
 .withdraw-amount-button {
+    margin-top: auto;
+    border-radius: 4.5rem;
     background-color: rgb(5, 126, 5);
     max-height: 20%;
     cursor: pointer;

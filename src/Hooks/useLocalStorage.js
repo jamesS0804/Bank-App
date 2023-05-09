@@ -3,20 +3,64 @@ import { useEffect, useState } from "react"
 //temporary user list in local storage
 const userList = [
     {
-        id: "abcdef-1234-xyz",
+        id: "20231234567",
         name: "John Smith",
+        email: "jSmith@gmail.com",
+        password: "jSmith1234",
         cardNumber: "1234 5678 1234 5678",
         expiryDate: "1/26",
         accountBalance: 0,
-        expenses: []
+        add: () => {},
+        delete: () => {},
+        list: [
+            {
+                itemId: "1",
+                itemName: "test",
+                itemCost: 100,
+                itemOwner: "20231234567",
+                itemUpdate: function () {
+                    return this.itemId
+                }
+            },
+            {
+                itemId: "2",
+                itemName: "test2",
+                itemCost: 400,
+                itemOwner: "20231234567",
+                itemUpdate: function () {
+                    return this.itemId
+                },
+            }
+        ]
     },
     {
-        id: "ghijkl-5678-rst",
+        id: "20235671234",
         name: "Jane Doe",
+        email: "jDoe@gmail.com",
+        password: "jDoe5678",
         cardNumber: "1234 1234 1234 1234",
         expiryDate: "3/30",
         accountBalance: 100,
-        expenses: []
+        add: () => {},
+        delete: () => {},
+        list: [
+            {
+                itemId: "3",
+                itemName: "abc",
+                itemCost: 1000,
+                itemOwner: "20235671234",
+                itemUpdate: () => {
+
+                }
+            },
+            {
+                itemId: "4",
+                itemName: "abc2",
+                itemCost: 500,
+                itemOwner: "20235671234",
+                itemUpdate: () => {}
+            }
+        ]
     }
 ]
 
@@ -50,17 +94,16 @@ const userList = [
 // testing purposes
 
 // localStorage.clear
+// localStorage.setItem("loggedAccount", JSON.stringify(""))
+// localStorage.setItem("auth", JSON.stringify(false))
 // localStorage.setItem("userList", JSON.stringify(userList))
-// console.log(userList)
-// localStorage.setItem("loggedAccount",JSON.stringify(userList[0].id))
-// console.log(userList[0].id)
 
 const storedUserList = JSON.parse(localStorage.getItem("userList"))
-const loggedAccountID = JSON.parse(localStorage.getItem("loggedAccount"))
 
 export default function useLocalStorage(key) {
+    const loggedAccountId = JSON.parse(localStorage.getItem("loggedAccount"))
     const [loggedAccount,setLoggedAccount] = useState(() => {
-        return getAccountInfo(loggedAccountID)
+        return getAccountInfo(loggedAccountId)
     })
     const [value,setValue] = useState(() => {
         return loggedAccount[`${key}`]
@@ -73,16 +116,20 @@ export default function useLocalStorage(key) {
        })
     },[value])
     useEffect(() => {
-        for(let user of storedUserList) {
-            if(user.id === loggedAccount.id) {
-                Object.assign(user,loggedAccount)
-                break
-            }
-        }
-        localStorage.setItem("userList",JSON.stringify(storedUserList))
+        updateAccountInfo(loggedAccount)
     }, [loggedAccount])
 
     return [value,setValue]
+}
+export function getLoggedIn(email,password) {
+    for(let user of storedUserList){
+        if(user.email === email) {
+            if(user.password === password) {
+                localStorage.setItem("loggedAccount",JSON.stringify(user.id))
+                return true
+            }
+        }    
+    }
 }
 export function getAccountInfo(accountID) {
     for(let user of storedUserList){
@@ -90,4 +137,13 @@ export function getAccountInfo(accountID) {
             return user
         }
     }
+}
+export function updateAccountInfo(account) {
+    for(let user of storedUserList) {
+        if(user.id === account.id) {
+            Object.assign(user,account)
+            break
+        }
+    }
+    localStorage.setItem("userList",JSON.stringify(storedUserList))
 }
