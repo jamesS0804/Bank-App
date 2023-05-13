@@ -9,29 +9,11 @@ const userList = [
         password: "jSmith1234",
         cardNumber: "1234 5678 1234 5678",
         expiryDate: "1/26",
-        accountBalance: 0,
-        add: () => {},
-        delete: () => {},
-        list: [
-            {
-                itemId: "1",
-                itemName: "test",
-                itemCost: 100,
-                itemOwner: "20231234567",
-                itemUpdate: function () {
-                    return this.itemId
-                }
-            },
-            {
-                itemId: "2",
-                itemName: "test2",
-                itemCost: 400,
-                itemOwner: "20231234567",
-                itemUpdate: function () {
-                    return this.itemId
-                },
-            }
-        ]
+        accountBalance: 100,
+        expenseTotal: 0,
+        add: "function a() {  }",
+        delete: "function d() {}",
+        expenseItems: []
     },
     {
         id: "20235671234",
@@ -40,58 +22,14 @@ const userList = [
         password: "jDoe5678",
         cardNumber: "1234 1234 1234 1234",
         expiryDate: "3/30",
-        accountBalance: 100,
+        accountBalance: 8500,
+        expenseTotal: 0,
         add: () => {},
         delete: () => {},
-        list: [
-            {
-                itemId: "3",
-                itemName: "abc",
-                itemCost: 1000,
-                itemOwner: "20235671234",
-                itemUpdate: () => {
-
-                }
-            },
-            {
-                itemId: "4",
-                itemName: "abc2",
-                itemCost: 500,
-                itemOwner: "20235671234",
-                itemUpdate: () => {}
-            }
-        ]
+        expenseItems: []
     }
 ]
-
-// class User {
-//     constructor(email,name,password){
-//         email
-//         name
-//         password
-//     }
-//     list() {
-
-//     }
-//     addItem() {
-
-//     }
-//     deleteItem() {
-
-//     }
-// }
-// class ExpenseItem {
-//     constructor(itemName,cost,user){
-//         itemName
-//         cost
-//         user
-//     }
-//     updateItem() {
-
-//     }
-// }
-
-// testing purposes
+// // testing purposes
 
 // localStorage.clear
 // localStorage.setItem("loggedAccount", JSON.stringify(""))
@@ -106,12 +44,26 @@ export default function useLocalStorage(key) {
         return getAccountInfo(loggedAccountId)
     })
     const [value,setValue] = useState(() => {
-        return loggedAccount[`${key}`]
+        if(key instanceof Object) {
+            const newObject = {}
+            const specificKeys = Object.values(key)
+            specificKeys.forEach(sKey => {
+                newObject[sKey] = loggedAccount[sKey]
+            })
+            return newObject
+        }
+        return loggedAccount[key]
     })
     useEffect(()=> {
        setLoggedAccount(currentAccountInfo => {
             currentAccountInfo = {...loggedAccount}
-            currentAccountInfo[`${key}`] = value
+            if(key instanceof Object) {
+                for(const sKey in value) {
+                    currentAccountInfo[sKey] = value[sKey]
+                }
+            } else {
+                currentAccountInfo[key] = value
+            }
             return currentAccountInfo
        })
     },[value])
@@ -130,9 +82,10 @@ export function getLoggedIn(email,password) {
             }
         }    
     }
+    return false
 }
 export function getAccountInfo(accountID) {
-    for(let user of storedUserList){
+    for(const user of storedUserList){
         if(user.id === accountID) {
             return user
         }

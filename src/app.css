@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 :root {
     font-size: 10px;
+    font-family: 'Roboto', sans-serif;
 }
 * {
     box-sizing: border-box;
@@ -13,42 +16,30 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
+    background-image: url(./assets/login-page.jpg);
+    background-size: cover;
 }
 .dashboard {
-    /* height: 90vh; */
-    border: 1px solid black;
+    width: 25vw;
+    border: 1px solid rgba(253, 253, 253, 0.15);
     padding: 2em;
     display: flex;
     flex-direction: column;
     gap: 2rem;
     border-radius: 2em;
+    backdrop-filter: blur(10px);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: white;
 }
 .card {
+    width: 100%;
     border: 1px solid black;
     padding: 2em;
     border-radius: 2em;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.home-page {
-    height: 90vh;
-    padding: 2em;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    border-radius: 2em;
-}
-.home-page header {
-    width: 100%;
-    display: flex;
-    gap: 2rem;
-}
-.home-page header input {
-    max-width: fit-content;
-    margin-left: auto;
-    padding: 0.2em;
-}
 .actions {
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
     gap: 1em;
@@ -56,7 +47,6 @@ body {
 }
 a {
     text-decoration: none;
-    color: black;
 }
 .actions div {
     width: 100%;

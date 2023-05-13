@@ -6,10 +6,10 @@ import { getAccountInfo, updateAccountInfo } from "../Hooks/useLocalStorage"
 import "./transfer.css"
 
 export default function Transfer(props) {
-    const {accountBalance,setAccountBalance,cardNumber,expiryDate} = props
+    const {userData, setUserData, accountBalance, cardNumber, expiryDate} = props
     const [transferAmount,setTransferAmount] = useState(0)
-    function handleSubmit(e) {
-        e.preventDefault()
+    function handleSubmit(event) {
+        event.preventDefault()
         const receiverAccNumber = receiverAccountNumber.value
 
         if(!getAccountInfo(receiverAccNumber)) return 0
@@ -18,12 +18,10 @@ export default function Transfer(props) {
 
         receiverAccount.accountBalance += Number(transferAmount)
         updateAccountInfo(receiverAccount)
-        setAccountBalance(currentAccountBalance => {
-            currentAccountBalance = accountBalance - Number(transferAmount)
-            console.log(transferAmount)
-            return currentAccountBalance
-        })
-        e.target.reset()
+
+        setUserData({...userData, 
+            accountBalance: accountBalance - Number(transferAmount)
+          })
     }
     return (
         <div className="transfer-page">

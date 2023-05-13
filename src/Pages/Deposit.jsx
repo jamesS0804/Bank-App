@@ -1,18 +1,17 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Link } from "react-router-dom"
 import Card from "../Components/Card"
 import AmountInputField from "../Components/AmountInputField"
 import "./deposit.css"
 
 export default function Deposit(props) {
-    const {accountBalance,setAccountBalance,cardNumber,expiryDate} = props
+    const {userData, setUserData, accountBalance, cardNumber, expiryDate} = props
     const [depositAmount,setDepositAmount] = useState(0)
     function handleSubmit(event) {
         event.preventDefault()
-        setAccountBalance(currentAccountBalance => {
-            currentAccountBalance = accountBalance + Number(depositAmount)
-            return currentAccountBalance
-        })
+        setUserData({...userData, 
+            accountBalance: accountBalance + Number(depositAmount)
+          })
     }
     return (
         <div className="deposit-page">

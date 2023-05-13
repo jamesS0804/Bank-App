@@ -13,11 +13,16 @@ export default function Login(props) {
     }
     return (
         <form onSubmit={handleSubmit}>
-            <label>Email </label>
-            <input type="text" name="email" required />
-            <label>Password </label>
-            <input type="password" name="password" required />
-            <input type="submit" />
+            <h1>Log In</h1>
+            <label htmlFor="email">Username </label>
+            <input id="email" type="email" name="email" placeholder="Email" required />
+            <label htmlFor="password">Password </label>
+            <input id="password" type="password" name="password" placeholder="Password" required />
+            <input type="submit" value="Log In" />
+            <div className="sign-up-section">
+                <span>Don't have an account yet?</span>
+                <a>Sign Up</a>
+            </div>
         </form>
     )
 }

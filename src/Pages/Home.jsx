@@ -1,10 +1,10 @@
 import Card from "../Components/Card"
 import Actions from "../Components/Actions"
 import Budget from "../Components/Budget"
+import "./home.css"
 
 export default function Home(props) {
-    const {name, accountBalance, cardNumber, expiryDate} = props
-    const {auth, setAuth} = props
+    const {auth, setAuth, name, accountBalance, userData, setUserData, cardNumber, expiryDate} = props
 
     function handleClick() {
         setAuth(currentAuth => {
@@ -21,7 +21,7 @@ export default function Home(props) {
             </header>
             <Card accountBalance={accountBalance} cardNumber={cardNumber} expiryDate={expiryDate} />
             <Actions />
-            <Budget />
+            <Budget userData={userData} setUserData={setUserData}/>
         </div>
     )
 }

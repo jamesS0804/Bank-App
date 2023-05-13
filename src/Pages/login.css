@@ -5,4 +5,52 @@ form {
     align-items: center;
     gap: 2rem;
     font-size: large;
+    color: white;
+    padding: 3em 1em 2em 1em;
+}
+h1 {
+    margin-bottom: 4rem;
+}
+label {
+    font-size: 2rem;
+    font-weight: 600;
+    align-self: flex-start;
+}
+input, input:focus {
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    margin-top: -0.5rem;
+    font-size: 1.75rem;
+    font-weight: 300;
+}
+#email {
+    margin-bottom: 2rem;
+}
+::placeholder {
+    text-align: left;
+    padding-left: 1.5em;
+    color: rgba(255, 255, 255, 0.8);
+}
+input[type="submit"] {
+    margin-top: 3rem;
+    padding: 1em 1em 2em 1em;
+    font-size: 2rem;
+    font-weight: 600;
+    background-color: white;
+    cursor: pointer;
+}
+.sign-up-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+a, a:hover, a:visited {
+    font-size: 2rem;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
 }

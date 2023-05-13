@@ -7,17 +7,22 @@ import useLocalStorage from "../Hooks/useLocalStorage.js"
 
 export default function Main(props) {
     const {auth, setAuth} = props
-    const name = useLocalStorage("name")
-    const [accountBalance,setAccountBalance] = useLocalStorage("accountBalance")
-    const cardNumber = useLocalStorage("cardNumber")
-    const expiryDate = useLocalStorage("expiryDate")
+    const [userData,setUserData] = useLocalStorage(
+        {
+            accountBalance:"accountBalance",
+            expenseTotal:"expenseTotal",
+            expenseItems:"expenseItems",
+            name:"name",
+            cardNumber:"cardNumber",
+            expiryDate:"expiryDate"
+        })
 
     return (
         <Routes>
-            <Route index path="/home" element={<Home auth={auth} setAuth={setAuth} name={name} accountBalance={accountBalance} setAccountBalance={setAccountBalance} cardNumber={cardNumber} expiryDate={expiryDate}/>}/>
-            <Route path="/deposit" element={<Deposit accountBalance={accountBalance} setAccountBalance={setAccountBalance} cardNumber={cardNumber} expiryDate={expiryDate}/>}/>
-            <Route path="/withdraw" element={<Withdraw accountBalance={accountBalance} setAccountBalance={setAccountBalance} cardNumber={cardNumber} expiryDate={expiryDate}/>}/>
-            <Route path="/transfer" element={<Transfer accountBalance={accountBalance} setAccountBalance={setAccountBalance} cardNumber={cardNumber} expiryDate={expiryDate}/>}/>
+            <Route index path="/home" element={<Home auth={auth} setAuth={setAuth} name={userData.name} accountBalance={userData.accountBalance} userData={userData} setUserData={setUserData} cardNumber={userData.cardNumber} expiryDate={userData.expiryDate}/>}/>
+            <Route path="/deposit" element={<Deposit userData={userData} accountBalance={userData.accountBalance} setUserData={setUserData} cardNumber={userData.cardNumber} expiryDate={userData.expiryDate}/>}/>
+            <Route path="/withdraw" element={<Withdraw userData={userData} accountBalance={userData.accountBalance} setUserData={setUserData} cardNumber={userData.cardNumber} expiryDate={userData.expiryDate}/>}/>
+            <Route path="/transfer" element={<Transfer userData={userData} accountBalance={userData.accountBalance} setUserData={setUserData} cardNumber={userData.cardNumber} expiryDate={userData.expiryDate}/>}/>
         </Routes>
     )
 }

@@ -5,14 +5,13 @@ import AmountInputField from "../Components/AmountInputField"
 import "./withdraw.css"
 
 export default function Withdraw(props) {
-    const {accountBalance,setAccountBalance,cardNumber,expiryDate} = props
+    const {userData, setUserData, accountBalance, cardNumber, expiryDate} = props
     const [withdrawAmount,setWithdrawAmount] = useState(0)
-    function handleSubmit() {
+    function handleSubmit(event) {
         event.preventDefault()
-        setAccountBalance(currentAccountBalance => {
-            currentAccountBalance = accountBalance - Number(withdrawAmount)
-            return currentAccountBalance
-        })
+        setUserData({...userData, 
+            accountBalance: accountBalance - Number(withdrawAmount)
+          })
     }
     return (
         <div className="withdraw-page">

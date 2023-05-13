@@ -1,0 +1,19 @@
+.home-page {
+    height: 90vh;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    border-radius: 2em;
+}
+.home-page header {
+    width: 100%;
+    display: flex;
+    gap: 2rem;
+}
+.home-page header input {
+    max-width: fit-content;
+    margin-left: auto;
+    padding: 0.2em;
+}

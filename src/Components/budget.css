@@ -20,6 +20,9 @@ table {
 .budget-data thead {
     border-bottom: 1px solid rgb(0, 0, 0);
 }
+tbody input {
+    border: none;
+}
 .budget-item-actions {
     display: flex;
     gap: 1rem;
