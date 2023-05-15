@@ -11,8 +11,6 @@ const userList = [
         expiryDate: "1/26",
         accountBalance: 100,
         expenseTotal: 0,
-        add: "function a() {  }",
-        delete: "function d() {}",
         expenseItems: []
     },
     {
@@ -24,8 +22,6 @@ const userList = [
         expiryDate: "3/30",
         accountBalance: 8500,
         expenseTotal: 0,
-        add: () => {},
-        delete: () => {},
         expenseItems: []
     }
 ]

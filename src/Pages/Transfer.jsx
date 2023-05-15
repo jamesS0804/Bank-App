@@ -5,6 +5,7 @@ import AmountInputField from "../Components/AmountInputField"
 import { getAccountInfo, updateAccountInfo } from "../Hooks/useLocalStorage"
 import "./transfer.css"
 import "../Components/card.css"
+import { flushSync } from "react-dom"
 
 export default function Transfer(props) {
     const {userData, setUserData, accountBalance, cardNumber, expiryDate} = props
@@ -20,9 +21,12 @@ export default function Transfer(props) {
         receiverAccount.accountBalance += Number(transferAmount)
         updateAccountInfo(receiverAccount)
 
-        setUserData({...userData, 
-            accountBalance: accountBalance - Number(transferAmount)
-          })
+        flushSync(() => {
+            setUserData({...userData, 
+                accountBalance: accountBalance - Number(transferAmount)
+              })
+        })
+        setTransferAmount(0)
     }
     return (
         <div className="transfer-page">

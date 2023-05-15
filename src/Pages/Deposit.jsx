@@ -4,15 +4,19 @@ import Card from "../Components/Card"
 import AmountInputField from "../Components/AmountInputField"
 import "../Components/card.css"
 import "./deposit.css"
+import { flushSync } from "react-dom"
 
 export default function Deposit(props) {
     const {userData, setUserData, accountBalance, cardNumber, expiryDate} = props
     const [depositAmount,setDepositAmount] = useState(0)
     function handleSubmit(event) {
         event.preventDefault()
-        setUserData({...userData, 
-            accountBalance: accountBalance + Number(depositAmount)
-          })
+        flushSync(() => {
+            setUserData({...userData, 
+                accountBalance: accountBalance + Number(depositAmount)
+              })
+        })
+        setDepositAmount(0)
     }
     return (
         <div className="deposit-page">

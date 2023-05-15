@@ -16,7 +16,6 @@ export default function Main(props) {
             cardNumber:"cardNumber",
             expiryDate:"expiryDate"
         })
-
     return (
         <Routes>
             <Route index path="/home" element={<Home auth={auth} setAuth={setAuth} name={userData.name} accountBalance={userData.accountBalance} userData={userData} setUserData={setUserData} cardNumber={userData.cardNumber} expiryDate={userData.expiryDate}/>}/>

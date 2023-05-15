@@ -4,15 +4,19 @@ import Card from "../Components/Card"
 import AmountInputField from "../Components/AmountInputField"
 import "./withdraw.css"
 import "../Components/card.css"
+import { flushSync } from "react-dom"
 
 export default function Withdraw(props) {
     const {userData, setUserData, accountBalance, cardNumber, expiryDate} = props
     const [withdrawAmount,setWithdrawAmount] = useState(0)
     function handleSubmit(event) {
         event.preventDefault()
-        setUserData({...userData, 
-            accountBalance: accountBalance - Number(withdrawAmount)
-          })
+        flushSync(() => {
+            setUserData({...userData, 
+                accountBalance: accountBalance - Number(withdrawAmount)
+            })
+        })
+        setWithdrawAmount(0)
     }
     return (
         <div className="withdraw-page">

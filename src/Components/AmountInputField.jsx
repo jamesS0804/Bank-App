@@ -11,7 +11,7 @@ export default function AmountInputField(props) {
     return (
         <div className="amount-input-container">
             <FontAwesomeIcon className="currency-symbol" icon={faDollarSign} size="2x" />
-            <input type="number" placeholder={value} onInput={handleChange} required/>
+            <input type="number" value={value} onInput={handleChange} min="1" required/>
         </div>
     )
 }

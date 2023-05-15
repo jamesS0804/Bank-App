@@ -1,7 +1,7 @@
 import "./budget.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare, faTrash, faCheck } from '@fortawesome/free-solid-svg-icons'
-import { useEffect, useRef } from "react"
+import { useRef } from "react"
 
 export default function Budget(props) {
   const { userData,setUserData } = props
@@ -14,29 +14,27 @@ export default function Budget(props) {
   let index = 0
   let deletedItemCost = 0
 
-  useEffect(() => {
-    console.log(" ")
-    console.log("ON RENDER...")
-    console.log("data array: ")
-    console.log(userData.expenseItems)
-    console.log("data total: " + userData.expenseTotal)
-    console.log("account balance: " + userData.accountBalance)
-    console.log(" ")
-  },[])
-  useEffect(() => {
-    console.log(" ")
-    console.log("ON USER DATA UPDATE...")
-    console.log("data array: ")
-    console.log(userData.expenseItems)
-    console.log("data total: " + userData.expenseTotal)
-    console.log("account balance: " + userData.accountBalance)
-    console.log(" ")
-  }, [userData])
+  // useEffect(() => {
+  //   console.log(" ")
+  //   console.log("ON RENDER...")
+  //   console.log("data array: ")
+  //   console.log(userData.expenseItems)
+  //   console.log("data total: " + userData.expenseTotal)
+  //   console.log("account balance: " + userData.accountBalance)
+  //   console.log(" ")
+  // },[])
+  // useEffect(() => {
+  //   console.log(" ")
+  //   console.log("ON USER DATA UPDATE...")
+  //   console.log("data array: ")
+  //   console.log(userData.expenseItems)
+  //   console.log("data total: " + userData.expenseTotal)
+  //   console.log("account balance: " + userData.accountBalance)
+  //   console.log(" ")
+  // }, [userData])
 
   function updateAccountBalance (currentBalance,operation,deletedCost) {
-    console.log("total expense: " + expenseTotalRef.current)
     let newBalance = operation === "add" ? currentBalance + Number(deletedCost) : (currentBalance - expenseTotalRef.current) + userData.expenseTotal
-    console.log("total new balance: " + newBalance)
     return newBalance
   }
   function updateExpenseTotal() {
@@ -90,7 +88,6 @@ export default function Budget(props) {
             name: "Expense Item",
             cost: 0,
             owner: userData.id,
-            update: "function u() { console.log(itemId) }",
             isBeingEdited: false
           }
         ]
@@ -145,10 +142,10 @@ export default function Budget(props) {
               return (
                 <tr key={expenseItem.id} className="budget-data-item">
                   <td headers="budget-header-expense" className="budget-item-name">
-                    <input type="text" id={expenseItem.id} ref={item => expenseItemNameRef.current[index] = item} defaultValue={expenseItem.name} readOnly/>
+                    <input type="text" id={expenseItem.id} ref={item => expenseItemNameRef.current[index] = item} placeholder={expenseItem.name} defaultValue={expenseItem.name} readOnly/>
                   </td>
                   <td headers="budget-header-cost" className="budget-item-cost">
-                    <input type="number" id={expenseItem.id} ref={item => expenseCostRef.current[index] = item} defaultValue={expenseItem.cost} readOnly/>
+                    <input type="number" id={expenseItem.id} ref={item => expenseCostRef.current[index] = item} placeholder={expenseItem.cost} defaultValue={expenseItem.cost} readOnly/>
                   </td>
                   <td headers="budget-header-actions" className="budget-item-actions">
                     { expenseItem.isBeingEdited ? <FontAwesomeIcon icon={faCheck} onClick={() => handleEditExpense(expenseItem.id) }/> : <FontAwesomeIcon icon={faPenToSquare} id={userData.id} onClick={() => handleFocusInput(expenseItem.id)}/> }
