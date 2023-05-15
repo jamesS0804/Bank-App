@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import Card from "../Components/Card"
 import AmountInputField from "../Components/AmountInputField"
+import "../Components/card.css"
 import "./deposit.css"
 
 export default function Deposit(props) {

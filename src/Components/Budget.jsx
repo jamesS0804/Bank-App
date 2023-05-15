@@ -34,9 +34,9 @@ export default function Budget(props) {
   }, [userData])
 
   function updateAccountBalance (currentBalance,operation,deletedCost) {
-    console.log(expenseTotalRef.current)
-    let newBalance = operation === "add" ? currentBalance + Number(deletedCost) : currentBalance - expenseTotalRef.current
-    console.log(newBalance)
+    console.log("total expense: " + expenseTotalRef.current)
+    let newBalance = operation === "add" ? currentBalance + Number(deletedCost) : (currentBalance - expenseTotalRef.current) + userData.expenseTotal
+    console.log("total new balance: " + newBalance)
     return newBalance
   }
   function updateExpenseTotal() {
@@ -140,7 +140,7 @@ export default function Budget(props) {
           </tr>
         </thead>
         <tbody>
-          {userData.expenseItems.length === 0 && <tr><td>No Expenses</td></tr>}
+          {userData.expenseItems.length === 0 && <tr className="no-expense-text"><td colSpan={3}>No Expenses</td></tr>}
           {userData.expenseItems.map((expenseItem, index) => {
               return (
                 <tr key={expenseItem.id} className="budget-data-item">

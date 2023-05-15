@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import Card from "../Components/Card"
 import AmountInputField from "../Components/AmountInputField"
 import "./withdraw.css"
+import "../Components/card.css"
 
 export default function Withdraw(props) {
     const {userData, setUserData, accountBalance, cardNumber, expiryDate} = props

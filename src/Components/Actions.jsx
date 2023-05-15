@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import "./actions.css"
 
 export default function Actions() {
   return (

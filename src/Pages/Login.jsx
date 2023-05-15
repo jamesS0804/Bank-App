@@ -12,7 +12,7 @@ export default function Login(props) {
         })
     }
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="login-form" onSubmit={handleSubmit}>
             <h1>Log In</h1>
             <label htmlFor="email">Username </label>
             <input id="email" type="email" name="email" placeholder="Email" required />

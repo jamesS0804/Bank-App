@@ -4,6 +4,7 @@ import Card from "../Components/Card"
 import AmountInputField from "../Components/AmountInputField"
 import { getAccountInfo, updateAccountInfo } from "../Hooks/useLocalStorage"
 import "./transfer.css"
+import "../Components/card.css"
 
 export default function Transfer(props) {
     const {userData, setUserData, accountBalance, cardNumber, expiryDate} = props

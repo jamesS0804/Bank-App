@@ -1,9 +1,5 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
 .budget-container {
+    width: 100%;
     font-size: 1.5rem;
 }
 table {
@@ -13,17 +9,35 @@ table {
 .budget-data {
     width: 100%;
     font-size: 2rem;
+    overflow-y: auto;
 }
 .budget-data td, th {
-    padding: 1rem;
+    padding: 1em;
+}
+.budget-data-header th {
+    text-align: center;
 }
 .budget-data thead {
-    border-bottom: 1px solid rgb(0, 0, 0);
+    border-bottom: 3px solid rgb(0, 0, 0);
+}
+.no-expense-text {
+    width: 100%;
+}
+.no-expense-text td {
+    text-align: center;
 }
 tbody input {
     border: none;
 }
 .budget-item-actions {
+    height: auto;
     display: flex;
-    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+.budget-add-expense, .budget-add-expense:focus {
+    background-color: white;
+    color: black;
+    margin-top: 2rem;
 }

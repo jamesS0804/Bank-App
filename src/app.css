@@ -19,18 +19,6 @@ body {
     background-image: url(./assets/login-page.jpg);
     background-size: cover;
 }
-.dashboard {
-    width: 25vw;
-    border: 1px solid rgba(253, 253, 253, 0.15);
-    padding: 2em;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    border-radius: 2em;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    color: white;
-}
 .card {
     width: 100%;
     border: 1px solid black;
@@ -38,16 +26,6 @@ body {
     border-radius: 2em;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.actions {
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    gap: 1em;
-    text-align: center;
-}
 a {
     text-decoration: none;
-}
-.actions div {
-    width: 100%;
 }

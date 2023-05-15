@@ -7,7 +7,6 @@ export default function App() {
   const navigate = useNavigate()
   const [auth,setAuth] = useState(() => {
     if(!localStorage.getItem("auth")) {
-      console.log(localStorage.getItem("auth"))
       return false
     }
     return JSON.parse(localStorage.getItem("auth"))
@@ -20,8 +19,8 @@ export default function App() {
   localStorage.setItem("auth",JSON.stringify(auth))
 
   return (
-    <div className="dashboard">
+    <>
       {auth ? <Main auth={auth} setAuth={setAuth}/> : <Login  setAuth={setAuth}/>}
-    </div>
+    </>
   )
 }

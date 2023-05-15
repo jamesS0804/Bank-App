@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDollarSign } from '@fortawesome/free-solid-svg-icons'
+import "../Components/amountinputfield.css"
 
 export default function AmountInputField(props) {
     const {value,setValue} = props
@@ -8,8 +9,8 @@ export default function AmountInputField(props) {
         setValue(input)
     }
     return (
-        <div className="deposit-amount-input">
-            <FontAwesomeIcon icon={faDollarSign} />
+        <div className="amount-input-container">
+            <FontAwesomeIcon className="currency-symbol" icon={faDollarSign} size="2x" />
             <input type="number" placeholder={value} onInput={handleChange} required/>
         </div>
     )

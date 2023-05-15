@@ -19,9 +19,13 @@ export default function Home(props) {
                 <h1>Welcome back, {name}!</h1>
                 <input type="button" value="Log out" onClick={handleClick}/>
             </header>
-            <Card accountBalance={accountBalance} cardNumber={cardNumber} expiryDate={expiryDate} />
-            <Actions />
-            <Budget userData={userData} setUserData={setUserData}/>
+            <main>
+                <section>
+                    <Card accountBalance={accountBalance} cardNumber={cardNumber} expiryDate={expiryDate} />
+                    <Actions />
+                </section>
+                <Budget userData={userData} setUserData={setUserData}/>
+            </main>
         </div>
     )
 }
